@@ -8,7 +8,25 @@ typedef struct gol{
  * @return gol[20][20]  The board in the default sizing
  */
 gol* create_default_gol() {
-
+	// Create the gol instance
+	gol* new_gol;
+	// Set the size of the board
+	new_gol->size = 20;
+	// Dynamically fill the rows with zero's
+	new_gol->board = malloc(new_gol->size * sizeof(int *));
+	if(new_gol->board == NULL) {
+		// TODO: Catch some errors
+		return;
+	}
+	// Then dynamically fill the columns with 0's
+	for(int i = 0; i < new_gol->size; i++) {
+		new_gol->board[i] = malloc(new_gol->size * sizeof(int *));
+		if(new_gol->board[i] == NULL) {
+			// TODO: Catch some errors
+			return;
+		}
+	}
+	return new_gol*
 }
 
 /**
@@ -17,7 +35,25 @@ gol* create_default_gol() {
  * @return gol[size][size]  The board of the size specified
  */
 gol* create_gol(size_t size) {
-
+	// Create the gol instance
+	gol* new_gol;
+	// Set the size of the board
+	new_gol->size = size;
+	// Dynamically fill the rows with zero's
+	new_gol->board = malloc(new_gol->size * sizeof(int *));
+	if(new_gol->board == NULL) {
+		// TODO: Catch some errors
+		return;
+	}
+	// Then dynamically fill the columns with 0's
+	for(int i = 0; i < new_gol->size; i++) {
+		new_gol->board[i] = malloc(new_gol->size * sizeof(int *));
+		if(new_gol->board[i] == NULL) {
+			// TODO: Catch some errors
+			return;
+		}
+	}
+	return new_gol*
 }
 
 /**
@@ -25,7 +61,7 @@ gol* create_gol(size_t size) {
  * @param gol  The board to remove
  */
 void destroy_gol(gol* g) {
-
+	free(g);
 }
 
 /**
@@ -34,7 +70,7 @@ void destroy_gol(gol* g) {
  * @param
  */
 void set_pattern(gol* g, int** b) {
-
+	
 }
 
 /**
