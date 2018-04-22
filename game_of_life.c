@@ -31,8 +31,8 @@ gol* create_default_gol() {
 
 /**
  * Create a board with the user specified sizing
- * @param size
- * @return gol[size][size]  The board of the size specified
+ * @param size_t 	The size of the board
+ * @return gol[size][size] 	The board of the size specified
  */
 gol* create_gol(size_t size) {
 	// Create the gol instance
@@ -58,22 +58,23 @@ gol* create_gol(size_t size) {
 
 /**
  * Remove the board
- * @param gol  The board to remove
+ * @param gol 	The board to remove
  */
 void destroy_gol(gol* g) {
 	free(g);
 }
 
 /**
- * 
- * @param
- * @param
+ * This sets the pattern, in reality the pattern is actually passed to it and it's applied to the board?
+ * @param gol 	The board
+ * @param int[][] 	The pattern to apply?
  */
 void set_pattern(gol* g, int** b) {
-	
+
 }
 
 /**
+ * Despite the name this actually progresses the board, evolve would be a more suitable name
  * @param
  */
 void next_pattern(gol* g) {
@@ -81,18 +82,29 @@ void next_pattern(gol* g) {
 }
 
 /**
- * @param
- * @param
- * @param
- * @return
+ * This takes in a board and a position and checks the neighbors values to calculate their sum (1 or 0)
+ * @param gol 	The board
+ * @param int 	The x location of the cell
+ * @param int 	The y location of the cell
+ * @return int 	The amount of alive neighbours next to the cell.
  */
 int neighbour_sum(gol* g, int i, int j) {
 
 }
 
 /**
- * @param
+ * Prints the current state of the board
+ * @param gol  The board
  */
 void print(gol* g) {
-
+	// For each row?
+	for(int i = 0; i < g->size; i++) {
+		// For each column
+		for(int j = 0; j < g->size; j++) {
+			// Print it's status
+			printf("%c", (g->board[i][j] == 0 ? "o" : "x"));
+			// If this is the last item print a new line
+			if(j == g->size - 1){ printf("\n") }
+		}
+	}
 }
