@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct gol{
 	int **board;
 	size_t size;
@@ -9,24 +12,24 @@ typedef struct gol{
  */
 gol* create_default_gol() {
 	// Create the gol instance
-	gol* new_gol;
+	gol** new_gol;
 	// Set the size of the board
 	new_gol->size = 20;
 	// Dynamically fill the rows with zero's
 	new_gol->board = malloc(new_gol->size * sizeof(int *));
 	if(new_gol->board == NULL) {
 		// TODO: Catch some errors
-		return;
+		return NULL;
 	}
 	// Then dynamically fill the columns with 0's
 	for(int i = 0; i < new_gol->size; i++) {
 		new_gol->board[i] = malloc(new_gol->size * sizeof(int *));
 		if(new_gol->board[i] == NULL) {
 			// TODO: Catch some errors
-			return;
+			return NULL;
 		}
 	}
-	return new_gol*
+	return new_gol;
 }
 
 /**
@@ -43,17 +46,17 @@ gol* create_gol(size_t size) {
 	new_gol->board = malloc(new_gol->size * sizeof(int *));
 	if(new_gol->board == NULL) {
 		// TODO: Catch some errors
-		return;
+		return NULL;
 	}
 	// Then dynamically fill the columns with 0's
 	for(int i = 0; i < new_gol->size; i++) {
 		new_gol->board[i] = malloc(new_gol->size * sizeof(int *));
 		if(new_gol->board[i] == NULL) {
 			// TODO: Catch some errors
-			return;
+			return NULL;
 		}
 	}
-	return new_gol*
+	return new_gol;
 }
 
 /**
@@ -89,7 +92,7 @@ void next_pattern(gol* g) {
  * @return int 	The amount of alive neighbours next to the cell.
  */
 int neighbour_sum(gol* g, int i, int j) {
-
+	return 0;
 }
 
 /**
@@ -102,9 +105,9 @@ void print(gol* g) {
 		// For each column
 		for(int j = 0; j < g->size; j++) {
 			// Print it's status
-			printf("%c", (g->board[i][j] == 0 ? "o" : "x"));
+			printf("%s", (g->board[i][j] == 0 ? "o" : "x"));
 			// If this is the last item print a new line
-			if(j == g->size - 1){ printf("\n") }
+			if(j == g->size - 1){ printf("\n"); }
 		}
 	}
 }
